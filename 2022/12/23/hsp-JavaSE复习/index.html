@@ -1,0 +1,316 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>hsp JavaSE复习 | AhaosBlog</title><meta name="author" content="Ahao"><meta name="copyright" content="Ahao"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="JavaSE复习 1.对象的多态（核心，重点）1.对象编译类型和运行类型可以不一致，可以让父类的引用指向子类的对象 1Animal animal &#x3D; new Dog();  等号左边编译类型，右边运行类型（编译就是javac的时候，运行就是真正运行的时候） 2.编译类型在定义对象时就确定了，不能改变 3.可以在形参列表直接声明父类引用，将子类对象传进去  4.向上转型：父类的引用指向子类的对象（向">
+<meta property="og:type" content="article">
+<meta property="og:title" content="hsp JavaSE复习">
+<meta property="og:url" content="http://example.com/2022/12/23/hsp-JavaSE%E5%A4%8D%E4%B9%A0/index.html">
+<meta property="og:site_name" content="AhaosBlog">
+<meta property="og:description" content="JavaSE复习 1.对象的多态（核心，重点）1.对象编译类型和运行类型可以不一致，可以让父类的引用指向子类的对象 1Animal animal &#x3D; new Dog();  等号左边编译类型，右边运行类型（编译就是javac的时候，运行就是真正运行的时候） 2.编译类型在定义对象时就确定了，不能改变 3.可以在形参列表直接声明父类引用，将子类对象传进去  4.向上转型：父类的引用指向子类的对象（向">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/13671/wallhaven-o5dqq9.jpg">
+<meta property="article:published_time" content="2022-12-23T10:07:15.000Z">
+<meta property="article:modified_time" content="2022-12-23T10:30:01.380Z">
+<meta property="article:author" content="Ahao">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/13671/wallhaven-o5dqq9.jpg"><link rel="shortcut icon" href="https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/13671/%E8%BF%9B%E5%BA%A6%E6%9D%A1.png"><link rel="canonical" href="http://example.com/2022/12/23/hsp-JavaSE%E5%A4%8D%E4%B9%A0/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'hsp JavaSE复习',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-12-23 18:30:01'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><!-- hexo injector head_end start --><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-clock/lib/clock.min.css" /><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/loading.gif" data-original="https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/13671/QQavatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">1</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-graduation-cap"></i><span> 博文</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/categories/"><i class="fa-fw fa fa-archive"></i><span> 分类</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/archives/"><i class="fa-fw fa fa-folder-open"></i><span> 归档</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 生活</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/shuoshuo/"><i class="fa-fw fa fa-comments-o"></i><span> 分享</span></a></li><li><a class="site-page child" href="/photos/"><i class="fa-fw fa fa-camera-retro"></i><span> 相册</span></a></li><li><a class="site-page child" href="/music/"><i class="fa-fw fa fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 影视</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/comments/"><i class="fa-fw fas fa-envelope"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于笔者</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/13671/wallhaven-o5dqq9.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">AhaosBlog</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-graduation-cap"></i><span> 博文</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/categories/"><i class="fa-fw fa fa-archive"></i><span> 分类</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/archives/"><i class="fa-fw fa fa-folder-open"></i><span> 归档</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 生活</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/shuoshuo/"><i class="fa-fw fa fa-comments-o"></i><span> 分享</span></a></li><li><a class="site-page child" href="/photos/"><i class="fa-fw fa fa-camera-retro"></i><span> 相册</span></a></li><li><a class="site-page child" href="/music/"><i class="fa-fw fa fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 影视</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/comments/"><i class="fa-fw fas fa-envelope"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于笔者</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">hsp JavaSE复习</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-12-23T10:07:15.000Z" title="发表于 2022-12-23 18:07:15">2022-12-23</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-12-23T10:30:01.380Z" title="更新于 2022-12-23 18:30:01">2022-12-23</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">1.8k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>5分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="hsp JavaSE复习"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="JavaSE复习"><a href="#JavaSE复习" class="headerlink" title="JavaSE复习"></a>JavaSE复习</h1><hr>
+<h2 id="1-对象的多态（核心，重点）"><a href="#1-对象的多态（核心，重点）" class="headerlink" title="1.对象的多态（核心，重点）"></a>1.对象的多态（核心，重点）</h2><p><strong>1.对象编译类型和运行类型可以不一致，<em>可以让父类的引用指向子类的对象</em></strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Animal</span> <span class="variable">animal</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Dog</span>();</span><br></pre></td></tr></table></figure>
+
+<p><em>等号左边编译类型，右边运行类型</em>（编译就是javac的时候，运行就是真正运行的时候）</p>
+<p><strong>2.编译类型在定义对象时就确定了，不能改变</strong></p>
+<p>3.可以在形参列表直接声明父类引用，将子类对象传进去</p>
+<hr>
+<p>4.向上转型：父类的引用指向子类的对象（向上转型的本质），可以调用父类的所有成员（遵守访问权限），但是不能调用子类的成员</p>
+<p>因为在编译阶段，（声明好了），能调用哪些成员，由编译类型决定。运行结果看子类，从子类开始查找方法并调用</p>
+<hr>
+<p>5.向下转型：子类类型  引用名 &#x3D;  （子类类型） 父类引用</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Cat</span> <span class="variable">cat</span> <span class="operator">=</span>(Cat) animal;</span><br></pre></td></tr></table></figure>
+
+<p>只能强转父类引用，不能强转父类对象（因为对象已经在内存创建好了）</p>
+<p>父类引用必需指向当前目标类型的对象(也就是说必须满足下面条件为前提，才能向上面那样写)</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Animal</span> <span class="variable">animal</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Dog</span>();</span><br></pre></td></tr></table></figure>
+
+<p>向下转型后就可以调用子类类型中的所有成员</p>
+<hr>
+<p>6.属性重写问题：属性没有重写一说，属性就看编译类型就行</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="variable">a</span> <span class="operator">=</span> <span class="number">1</span>;</span><br></pre></td></tr></table></figure>
+
+<p>脑筋急转弯</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Base</span> <span class="variable">base</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Sub</span>();</span><br><span class="line">System.out.println(base.count);</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Base</span> &#123; <span class="comment">//父类</span></span><br><span class="line"><span class="type">int</span> <span class="variable">count</span> <span class="operator">=</span> <span class="number">10</span>;</span><br><span class="line"><span class="comment">//属性 &#125;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Sub</span> <span class="keyword">extends</span> <span class="title class_">Base</span> &#123;<span class="comment">//子类 </span></span><br><span class="line"><span class="type">int</span> <span class="variable">count</span> <span class="operator">=</span> <span class="number">20</span>;</span><br><span class="line"><span class="comment">//属性 &#125;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>结果为10，因为属性看编译类型</p>
+<p>7.instanceOf    用来判断<em><strong>对象的运行类型</strong></em>是不是某某类型或者是不是某某类型的子类类型</p>
+<hr>
+<h2 id="2-动态绑定机制-p315（非常重要）"><a href="#2-动态绑定机制-p315（非常重要）" class="headerlink" title="2.动态绑定机制 p315（非常重要）"></a>2.动态绑定机制 p315（非常重要）</h2><p><img src="/img/loading.gif" data-original="https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/13671/image-20221015170815917.png" alt="image-20221015170815917"></p>
+<ol>
+<li><p>a的编译类型是A，运行类型是B，<em>当将B类的sum()方法注释掉时</em>，会自动找其父类A的sum()方法。</p>
+</li>
+<li><p>但是父类sum()方法中有调用一个getI方法，这时动态绑定（运用第一条机制，对象a和运行类型B绑定），会调用子类的getI方法。</p>
+</li>
+<li><p>但是子类（B类）的getI方法return i是return的B类定义的i（20），运用第二条机制，属性没有动态绑定，哪里声明，哪里使用。</p>
+</li>
+</ol>
+<hr>
+<h2 id="3-断点调试"><a href="#3-断点调试" class="headerlink" title="3.断点调试"></a>3.断点调试</h2><p><img src="/img/loading.gif" data-original="https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/13671/image-20221015193625682.png" alt="image-20221015193625682"></p>
+<ol>
+<li><p>断点调试是在程序运行的状态下</p>
+</li>
+<li><ul>
+<li><p>F7(跳入) F8(跳过) </p>
+</li>
+<li><p>shift+F8(跳出) F9(resume,执行到下一个断点)</p>
+</li>
+<li><p>F7：跳入方法内</p>
+</li>
+<li><p>F8: 逐行执行代码</p>
+</li>
+<li><p>shift+F8: 跳出方法</p>
+</li>
+</ul>
+</li>
+<li><p>图片从左到右：逐行执行（F8），进入到方法体内（F7），强制进入方法体内（alt+shift+F7），跳出方法（shift+F8）</p>
+</li>
+<li><p>左边从上到下：resume,执行到下一个断点（F9），stop</p>
+</li>
+<li><p>追源代码：有些jdk源码进不去，可以强制进去。</p>
+</li>
+<li><p>支持动态下断点：在程序运行过程中还可以下断点。</p>
+</li>
+</ol>
+<hr>
+<h2 id="4-Java反射机制"><a href="#4-Java反射机制" class="headerlink" title="4.Java反射机制"></a>4.Java反射机制</h2><ol>
+<li><p>需求引出反射：根据properties配置文件的指定信息，创建对象并调用方法。</p>
+</li>
+<li><ul>
+<li><p>首先要io流接收到类的路径，第一步，加载类，返回Class类型的对象cls</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Class</span> <span class="variable">cls</span> <span class="operator">=</span> Class.forName(classfullpath);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>通过 cls 获取你加载得到的类的对象实例:此时的o的运行类型是cat</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Object</span> <span class="variable">o</span> <span class="operator">=</span> cls.newInstance();</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>通过cls获取你加载得到的类的  <em>方法名字</em> ，来找到对应的方法对象（在反射机制中，方法也可以看作对象）（io流获得的方法名传入）。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Method</span> <span class="variable">method1</span> <span class="operator">=</span> cls.getMethod(methodName);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>通过method1调用方法：即通过方法的对象来实现调用方法。</p>
+</li>
+<li><p>传统方法<code>对象.方法()</code>，反射机制<code>方法.invoke(对象)</code></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">method1.invoke(o);</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>总结：框架&#x3D;反射+注解+设计模式，在不修改源码的情况下控制程序，符合设计模式的ocp原则（开闭原则：不修改源码，扩展功能）</p>
+</li>
+<li><p>反射原理图：</p>
+</li>
+</ol>
+<ul>
+<li><p>反射原理：执行期间借助于Reflection API取得任何类的内部信息（成员变量，构造器，成员方法），并能操作对象的属性和方法。</p>
+</li>
+<li><p>在加载类过后，堆中就会产生相应的Class类型的对象（一个类只有一个class对象），这个对象包含了类的完整结构信息。通过这个对象看到类的结构，就像镜子一样，故得名：<em>反射</em> 。</p>
+</li>
+<li><p>原理图：<img src="/img/loading.gif" data-original="https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/13671/image-20221104110317798.png" alt="image-20221104110317798"></p>
+</li>
+<li><p>java反射的功能：</p>
+<p>1.在运行时判断任意一个对象所属的类<br>2.在运行时构造任意一个类的对象<br>3.在运行时得到任意一个类所具有的成员变量和方法<br>4.在运行时调用任意一个对象的成员变量和方法<br>5.生成动态代理</p>
+</li>
+<li><p>反射相关的类：<br>1.java.lang.Class:代表一个类，Class对象表示某个类加载后在堆中的对象<br>2.java.lang.reflect.Method:代表类的方法，Method对象表示某个类的方法<br>3.java.lang.reflect.Field:代表类的成员变量（字段），Fild对象代表某个类的成员变量<br>4.java.lang.reflect.Constructor:代表类的构造方法，.Constructor代表某个类的构造方法<br>这些类在java.lang.reflection</p>
+</li>
+<li><p>cls.getConstructor(String.class)&#x2F;&#x2F;这里老师传入的String.classs，就是String类的Class对象，可以获得含参构造器</p>
+</li>
+</ul>
+<ol start="5">
+<li>反射调用优化：<ul>
+<li>优点：可以动态的创建和使用对象（也是框架底层核心），使用灵活，没有反射机<br>制，框架技术就失去底层支撑。</li>
+<li>缺点：使用反射基本是解释执行，对执行速度有影响。</li>
+<li>优化，method，field，constructor对象都有setAccessible()方法。这个方法的作用是启动和禁用访问安全检查的开关：参数为true，反射的对象在使用时取消访问检查，提高反射效率。参数值为false表示反射的对象执行访问检查。</li>
+</ul>
+</li>
+<li>Class类分析：<ul>
+<li>Class也是类，继承了了Obejct类。</li>
+<li>Class类不是new出来的，而是系统ClassLoder类的loadClass方法创建出来的。无论是new还是反射底层都会调用这一方法。</li>
+<li>对于某个类的Class类对象，在内存中只有一份，因为类只加载一次。</li>
+<li>每个对象实例都会记得自己由哪个Class实例所生成。</li>
+<li>通过Class类可以完整的得到一个类的结构，通过一系列api</li>
+<li>常用方法：<img src="/img/loading.gif" data-original="https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/13671/image-20221105101132831.png" alt="image-20221105101132831"></li>
+<li>Class对象是存放在堆的</li>
+<li>类的字节码二进制数据，是放在方法区的，有的地方称为类的元数据（包括方法代码，变量名，方法名，访问权限）</li>
+</ul>
+</li>
+<li>获取Class对象的六种方式：<ul>
+<li>代码阶段：主要是通过<code>Class.forname(全类名)</code>获取。<em>前提</em>：已知一个类的全类名，且该类在类路径下。<em>场景</em>：多用于配置文件，读取类的全路径，加载类。</li>
+<li>类加载阶段：通过<code>类.class</code>。该方式安全可靠，程序性能最高。<em>场景</em>：多用于参数传递，比如通过反射得到对应构造器对象。</li>
+<li>运行阶段：<code>对象.getClass()</code>。</li>
+<li>还可以类加载器获取0717</li>
+</ul>
+</li>
+</ol>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="http://example.com">Ahao</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2022/12/23/hsp-JavaSE%E5%A4%8D%E4%B9%A0/">http://example.com/2022/12/23/hsp-JavaSE复习/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">AhaosBlog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/13671/wallhaven-o5dqq9.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/loading.gif" data-original="https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/13671/QQavatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Ahao</div><div class="author-info__description">生活原本平静，但跑起来就有风。</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">1</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://githubfast.com/lyr233" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="https://blog.csdn.net/qq_55923034?type=blog" target="_blank" title="CSDN"><i class="fa fa-book-open"></i></a><a class="social-icon" href="mailto:571740336@qq.com" target="_blank" title="Email"><i class="fas fa-envelope-open-text"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#JavaSE%E5%A4%8D%E4%B9%A0"><span class="toc-number">1.</span> <span class="toc-text">JavaSE复习</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%A4%9A%E6%80%81%EF%BC%88%E6%A0%B8%E5%BF%83%EF%BC%8C%E9%87%8D%E7%82%B9%EF%BC%89"><span class="toc-number">1.1.</span> <span class="toc-text">1.对象的多态（核心，重点）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E5%8A%A8%E6%80%81%E7%BB%91%E5%AE%9A%E6%9C%BA%E5%88%B6-p315%EF%BC%88%E9%9D%9E%E5%B8%B8%E9%87%8D%E8%A6%81%EF%BC%89"><span class="toc-number">1.2.</span> <span class="toc-text">2.动态绑定机制 p315（非常重要）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E6%96%AD%E7%82%B9%E8%B0%83%E8%AF%95"><span class="toc-number">1.3.</span> <span class="toc-text">3.断点调试</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-Java%E5%8F%8D%E5%B0%84%E6%9C%BA%E5%88%B6"><span class="toc-number">1.4.</span> <span class="toc-text">4.Java反射机制</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2022/12/23/hsp-JavaSE%E5%A4%8D%E4%B9%A0/" title="hsp JavaSE复习"><img src="/img/loading.gif" data-original="https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/13671/wallhaven-o5dqq9.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="hsp JavaSE复习"/></a><div class="content"><a class="title" href="/2022/12/23/hsp-JavaSE%E5%A4%8D%E4%B9%A0/" title="hsp JavaSE复习">hsp JavaSE复习</a><time datetime="2022-12-23T10:07:15.000Z" title="发表于 2022-12-23 18:07:15">2022-12-23</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/13671/wallhaven-o5dqq9.jpg')"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2022 By Ahao</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"></div><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script id="click-show-text" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/click-show-text.min.js" data-mobile="true" data-text="富强,民主,文明,和谐,平等,公正,法治,爱国,敬业,诚信,友善" data-fontsize="15px" data-random="true" async="async"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><!-- hexo injector body_end start --><script data-pjax>
+  function butterfly_clock_injector_config(){
+    var parent_div_git = document.getElementsByClassName('sticky_layout')[0];
+    var item_html = '<div class="card-widget card-clock"><div class="card-glass"><div class="card-background"><div class="card-content"><div id="hexo_electric_clock"><img class="entered loading" id="card-clock-loading" src="/img/loading.gif" data-original="https://npm.elemecdn.com/hexo-butterfly-clock/lib/loading.gif" style="height: 120px; width: 100%;" data-ll-status="loading"/></div></div></div></div></div>';
+    console.log('已挂载butterfly_clock')
+    parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+    }
+  var elist = 'null'.split(',');
+  var cpage = location.pathname;
+  var epage = 'all';
+  var flag = 0;
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_clock_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_clock_injector_config();
+  }
+  </script><script src="https://pv.sohu.com/cityjson?ie=utf-8"></script><script data-pjax src="https://npm.elemecdn.com/hexo-butterfly-clock/lib/clock.min.js"></script><!-- hexo injector body_end end -->
+        <style>
+            [bg-lazy] {
+                background-image: none !important;
+                background-color: #eee !important;
+            }
+        </style>
+        <script>
+            window.imageLazyLoadSetting = {
+                isSPA: false,
+                preloadRatio: 1,
+                processImages: null,
+            };
+        </script><script>window.addEventListener("load",function(){var t=/\.(gif|jpg|jpeg|tiff|png)$/i,r=/^data:image\/[a-z]+;base64,/;Array.prototype.slice.call(document.querySelectorAll("img[data-original]")).forEach(function(a){var e=a.parentNode;"A"===e.tagName&&(e.href.match(t)||e.href.match(r))&&(e.href=a.dataset.original)})});</script><script>!function(r){r.imageLazyLoadSetting.processImages=t;var e=r.imageLazyLoadSetting.isSPA,n=r.imageLazyLoadSetting.preloadRatio||1,c=a();function a(){var t=Array.prototype.slice.call(document.querySelectorAll("img[data-original]")),e=Array.prototype.slice.call(document.querySelectorAll("[bg-lazy]"));return t.concat(e)}function t(){e&&(c=a());for(var t,o=0;o<c.length;o++)0<=(t=(t=c[o]).getBoundingClientRect()).bottom&&0<=t.left&&t.top<=(r.innerHeight*n||document.documentElement.clientHeight*n)&&function(){var t,e,n,a,i=c[o];e=function(){c=c.filter(function(t){return i!==t}),r.imageLazyLoadSetting.onImageLoaded&&r.imageLazyLoadSetting.onImageLoaded(i)},(t=i).hasAttribute("bg-lazy")?(t.removeAttribute("bg-lazy"),e&&e()):(n=new Image,a=t.getAttribute("data-original"),n.onload=function(){t.src=a,t.removeAttribute("data-original"),e&&e()},t.src!==a&&(n.src=a))}()}function i(){clearTimeout(t.tId),t.tId=setTimeout(t,500)}t(),document.addEventListener("scroll",i),r.addEventListener("resize",i),r.addEventListener("orientationchange",i)}(this);</script></body></html>
