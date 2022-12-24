@@ -1,0 +1,573 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>JavaWeb笔记 | AhaosBlog</title><meta name="author" content="Ahao"><meta name="copyright" content="Ahao"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="JavaWeb笔记 1. js简单复习1. 鼠标悬停效果实现 在head标签中的script标签中引入  在tr标签中： onmouseover&#x3D;”调用的方法()”  方法中的event：当前发生的事件，event.srcElement：事件源  onmouseout：当鼠标离开时  系统提供的对象：window：当前浏览器窗口，窗口显示的所有内容叫document(给定浏览器窗口中的h">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaWeb笔记">
+<meta property="og:url" content="http://example.com/2022/12/24/JavaWeb%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:site_name" content="AhaosBlog">
+<meta property="og:description" content="JavaWeb笔记 1. js简单复习1. 鼠标悬停效果实现 在head标签中的script标签中引入  在tr标签中： onmouseover&#x3D;”调用的方法()”  方法中的event：当前发生的事件，event.srcElement：事件源  onmouseout：当鼠标离开时  系统提供的对象：window：当前浏览器窗口，窗口显示的所有内容叫document(给定浏览器窗口中的h">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/13671/wallhaven-weqm37.jpg">
+<meta property="article:published_time" content="2022-12-24T05:13:32.000Z">
+<meta property="article:modified_time" content="2022-12-24T05:48:04.551Z">
+<meta property="article:author" content="Ahao">
+<meta property="article:tag" content="javaweb">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/13671/wallhaven-weqm37.jpg"><link rel="shortcut icon" href="https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/13671/%E8%BF%9B%E5%BA%A6%E6%9D%A1.png"><link rel="canonical" href="http://example.com/2022/12/24/JavaWeb%E7%AC%94%E8%AE%B0/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'JavaWeb笔记',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-12-24 13:48:04'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><!-- hexo injector head_end start --><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-clock/lib/clock.min.css" /><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/loading.gif" data-original="https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/13671/QQavatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">2</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">2</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-graduation-cap"></i><span> 博文</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/archives/"><i class="fa-fw fa fa-folder-open"></i><span> 归档</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于笔者</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/13671/wallhaven-weqm37.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">AhaosBlog</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-graduation-cap"></i><span> 博文</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/archives/"><i class="fa-fw fa fa-folder-open"></i><span> 归档</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于笔者</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">JavaWeb笔记</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-12-24T05:13:32.000Z" title="发表于 2022-12-24 13:13:32">2022-12-24</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-12-24T05:48:04.551Z" title="更新于 2022-12-24 13:48:04">2022-12-24</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">6.3k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>21分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="JavaWeb笔记"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="JavaWeb笔记"><a href="#JavaWeb笔记" class="headerlink" title="JavaWeb笔记"></a>JavaWeb笔记</h1><hr>
+<h2 id="1-js简单复习"><a href="#1-js简单复习" class="headerlink" title="1. js简单复习"></a>1. js简单复习</h2><h3 id="1-鼠标悬停效果实现"><a href="#1-鼠标悬停效果实现" class="headerlink" title="1. 鼠标悬停效果实现"></a>1. 鼠标悬停效果实现</h3><ol>
+<li><p>在head标签中的script标签中引入</p>
+</li>
+<li><p>在tr标签中： onmouseover&#x3D;”调用的方法()”</p>
+</li>
+<li><p>方法中的event：当前发生的事件，event.srcElement：事件源</p>
+</li>
+<li><p>onmouseout：当鼠标离开时</p>
+</li>
+<li><p>系统提供的对象：window：当前浏览器窗口，窗口显示的所有内容叫document(给定浏览器窗口中的html文档)，浏览器上面的导航栏叫location</p>
+</li>
+<li><p>&#96;&#96;&#96;js<br>window.onload&#x3D;fuction(){<br>&#x2F;&#x2F;当页面加载完成，需要绑定各种事件，举例：<br>var fruitTabl&#x3D;document.getElementById(“tb_fruit”);  &#x2F;&#x2F;通过document对象获取fruit表<br>var rows&#x3D;fruitTabl.rows;&#x2F;&#x2F;获取表格行数<br>for(var i&#x3D;0;i&lt;rows.length;i++){<br>    var tr&#x3D;rows[i];&#x2F;&#x2F;循环获取每一行的所有列<br>    tr.onmouseover&#x3D;showBGColor;&#x2F;&#x2F;1.绑定鼠标悬浮设置背景颜色事件（事件绑定）<br>}<br>}</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">### 2.更新单价</span><br><span class="line"></span><br><span class="line">-----</span><br><span class="line"></span><br><span class="line">## 2.servlet</span><br><span class="line"></span><br><span class="line">### 1.tomcat</span><br><span class="line"></span><br><span class="line">![image-20221105154230267](https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/13671/image-20221105154230267.png)</span><br><span class="line"></span><br><span class="line">### 2.快速入门</span><br><span class="line"></span><br><span class="line">1. 获取参数：用户在网站输入发请求：如`action=add`</span><br><span class="line">2. 项目中*web.xml*找到`url-pattern= /add` 然后找到`servlet-name = AddServlet`，找到和`servlet-mapping`中同名的`servlet-name`，然后找`servlet-class`的路径来找到对应的类</span><br><span class="line">3. 看用户发送的请求，用户发送的是`method = post`请求，故tomcat会执行servlet类中的`doPost`方法![image-20221106155105816](https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/13671/image-20221106155105816.png)</span><br><span class="line"></span><br><span class="line">4. 新建项目：</span><br><span class="line"></span><br><span class="line">- 新建模块，在模块中添加web模块，创建arctifact-部署包（war包：web项目的压缩包）</span><br><span class="line">- lib-artifact：现有artifact，后来才添加jar包（javaapi的包），此时，jar包并没有添加到部署包中。在projectStructure中会有提示。在problems中的fix可以添加。</span><br><span class="line">- 默认的`localhost/项目`访问的是欢迎页`index.xml`，在tomcat中的web.xml可以设置&lt;welcome-file-list&gt;标签里面的值来更改欢迎页访问谁，默认是`index.html`。或者在自己的web.xml中设置也行。</span><br><span class="line"></span><br><span class="line">5. 修改请求参数中的中文乱码问题：</span><br><span class="line"></span><br><span class="line">- post方式下`String fname = request.getParameter(&quot;fname&quot;)`之前，需要先设置一下编码，`request.setCharacterEncoding(&quot;UTF-8&quot;)` (request就是浏览器的请求，对应这个项目就是表单提交请求，也就是点击添加按钮)。</span><br><span class="line">- get方式基于tomcat8，不需要设置编码。</span><br><span class="line">- 注意：设置编码那句话必须在获取参数之前，否则已经获取到乱码了就不能再改了。</span><br><span class="line"></span><br><span class="line">### 3.servlet继承关系以及service方法</span><br><span class="line"></span><br><span class="line">1. ![image-20221106164526027](https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/13671/image-20221106164526027.png)</span><br><span class="line"></span><br><span class="line">2. ![image-20221106164715063](https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/13671/image-20221106164715063.png)</span><br><span class="line"></span><br><span class="line">3. **service方法：**</span><br><span class="line"></span><br><span class="line">- ```java</span><br><span class="line">  String method = req.getMethod();//获取请求的方式</span><br></pre></td></tr></table></figure></li>
+</ol>
+<ul>
+<li><p>获取完之后，if判断，请求是哪个就执行 <code>doXXX</code>方法。</p>
+</li>
+<li><p>当执行方法时，默认你重写了父类的doXXX方法，而重写的方法是<code>super.(req,res)</code>即默认是调用父类的方法。或者你没写doXXX方法，也会调用父类的方法。而父类的方法会通过获取协议值来判断是否<code>sendError(405/400,msg)</code>msg是通过support的key值来获取的报错信息。</p>
+</li>
+</ul>
+<ol start="4">
+<li>servlet的生命周期：</li>
+</ol>
+<ul>
+<li><p>servlet是tomcat容器帮我们去维护，自动调用方法</p>
+</li>
+<li><p>生命周期：从出生到死亡的过程，init()初始化——–&gt;service()服务———&gt;destroy()销毁。</p>
+</li>
+<li><p>只有第一次发请求的时候会初始化，即调用init()方法。servlet会进行实例化，初始化，然后服务，service()。</p>
+</li>
+<li><p>容器的销毁会调用destroy()销毁方法</p>
+</li>
+<li><p>Servlet实例tomcat，只会创建一个，所有的请求都是这个实例去响应。默认情况下，第一次请求时，tomcat才会去实例化，初始化，然后再服务。可以提高系统的启动速度。缺点：第一次请求时耗时较长。</p>
+</li>
+<li><p>如果想提高初始化速度，可以设置servlet的初始化时机：在servlet标签中添加<load-on-startup>标签，将标签内容设置为1，数字越小，启动的时间越靠前。设置了1之后tomcat直接启动并且创建。</p>
+</li>
+<li><p>servlet在容器中是单例的（单个的实例，不管几个请求，都是同一个），线程不安全的。线程不安全：一个线程需要根据这个实例中的某个成员变量值去做逻辑判断。但是在中间某个时机，另一个线程改变了这个成员变量的值，从而导致第一个线程的执行路径发生了变代。线程不安全，我们尽量不要在servlet中定义成员变量的值，不得不定义的话也不要去修改成员变量的值。<img src="/img/loading.gif" data-original="https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/13671/image-20221107092104315.png" alt="image-20221107092104315"></p>
+</li>
+</ul>
+<h3 id="4-HTTP协议"><a href="#4-HTTP协议" class="headerlink" title="4.HTTP协议"></a>4.HTTP协议</h3><h4 id="1-请求和响应："><a href="#1-请求和响应：" class="headerlink" title="1.请求和响应："></a>1.请求和响应：</h4><p><img src="/img/loading.gif" data-original="https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/13671/image-20221107140510757.png" alt="image-20221107140510757">																																																																					<img src="/img/loading.gif" data-original="https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/13671/image-20221107140904530.png" alt="image-20221107140904530"></p>
+<h4 id="2-会话："><a href="#2-会话：" class="headerlink" title="2.会话："></a>2.会话：</h4><h5 id="1-http无状态："><a href="#1-http无状态：" class="headerlink" title="1. http无状态："></a>1. http无状态：</h5><ul>
+<li>HTTP会无状态，服务器无法判断这两次请求是同一个客户端发过来的，还是不同的客户端发过来的。</li>
+<li>现实问题举例：第一次请求是添加商品到购物车，第二次请求是结账；如果这两次请求服务器无法区分是同一个用户的，就会导致混乱。</li>
+<li>如何解决？——————-&gt;通过会话跟踪技术来解决无状态的问题。</li>
+</ul>
+<h5 id="2-会话跟踪技术："><a href="#2-会话跟踪技术：" class="headerlink" title="2.会话跟踪技术："></a>2.会话跟踪技术：</h5><ul>
+<li>客户端第一次发请求给服务器，服务器会找请求要session（服务器获取session），获取不到，则创建新的，然后告诉客户端他的sessionid是什么（服务器响应给客户端）</li>
+<li>下次客户端给服务器发送请求时，会把sessionid带给服务器，服务器这次获取就可以获取到，那么服务器就判断这次请求是不是和之前的某次请求时同一客户端，从而区分不同的客户端，解决http无状态的问题。<img src="/img/loading.gif" data-original="https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/13671/image-20221107143752797.png" alt="image-20221107143752797"></li>
+</ul>
+<h5 id="3-保存作用域："><a href="#3-保存作用域：" class="headerlink" title="3.保存作用域："></a>3.保存作用域：</h5><ul>
+<li><p><img src="/img/loading.gif" data-original="https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/13671/image-20221107145642266.png" alt="image-20221107145642266"></p>
+</li>
+<li><p>同一客户端的（浏览器）session可以互相获取，不同的不行。同一webapp可以获取，不同的不行。session的作用域保存session的id和k，v值，可以存放n个kv值，但是重命名key，value值会被覆盖掉。</p>
+</li>
+</ul>
+<h5 id="4-内部转发和重定向"><a href="#4-内部转发和重定向" class="headerlink" title="4.内部转发和重定向"></a>4.内部转发和重定向</h5><ul>
+<li><p><img src="/img/loading.gif" data-original="https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/13671/image-20221107150233141.png" alt="image-20221107150233141"></p>
+</li>
+<li><p>服务器内部转发：一次请求响应的过程，对于客户端而言，内部经过了多少次转发，客户端是不知道的。地址栏没有变化。<img src="/img/loading.gif" data-original="https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/13671/image-20221107151946455.png" alt="image-20221107151946455"></p>
+</li>
+<li><p>重定向：两次请求响应的过程，客户端肯定知道URL有变化。地址栏有变化。<img src="/img/loading.gif" data-original="https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/13671/image-20221107152107657.png" alt="image-20221107152107657"></p>
+</li>
+</ul>
+<h3 id="5-Thymeleaf-视图模板技术"><a href="#5-Thymeleaf-视图模板技术" class="headerlink" title="5. Thymeleaf-视图模板技术"></a>5. Thymeleaf-视图模板技术</h3><h4 id="1-快速入门"><a href="#1-快速入门" class="headerlink" title="1.快速入门"></a>1.快速入门</h4><p><img src="/img/loading.gif" data-original="https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/13671/image-20221107154822964.png" alt="image-20221107154822964"></p>
+<ul>
+<li>servlet从3.0开始支持注解方式的注册，在servlet类前直接标注<code>@WebServlet（&quot;/路径&quot;）</code>，省去在web.xml中配置映射路径等步骤。</li>
+<li>Thymeleaf：添加jar包，然后再在web.xml文件中配置。然后cv  ViewBaseServlet：processTemplate方法，处理模板——&gt;完成资源的转发和数据的渲染。</li>
+<li>然后在web.xml中添加配置，配置视图前后缀。<img src="/img/loading.gif" data-original="https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/13671/image-20221107163539552.png" alt="image-20221107163539552"></li>
+</ul>
+<h4 id="2-渲染index页面"><a href="#2-渲染index页面" class="headerlink" title="2.渲染index页面"></a>2.渲染index页面<img src="/img/loading.gif" data-original="https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/13671/image-20221107170518192.png" alt="image-20221107170518192"></h4><ul>
+<li>通过thymeleaf语法，判断session中的fruitList是否为空。不为空：将list中的每一个元素迭代取出来。在每一列进行渲染，数据库中取出的元素动态放在对应的列。</li>
+</ul>
+<h4 id="3-thymeleaf-review"><a href="#3-thymeleaf-review" class="headerlink" title="3.thymeleaf review"></a>3.thymeleaf review</h4><p>知识点集合，上面都有，略。</p>
+<h4 id="4-保存作用域"><a href="#4-保存作用域" class="headerlink" title="4.保存作用域"></a>4.保存作用域</h4><ol>
+<li>原始情况下，我们认为有四个：page（页面级别，现在几乎不用)，request(一次请求响应范围),session(一次会话范围)，application(整个应用程序范围）</li>
+<li><ul>
+<li>request：一次请求响应范围：第一个重定向取不到值，因为是重定向，相当于两次响应。第二个可以取到值，因为是请求转发，一次响应，故可以取到值。<img src="/img/loading.gif" data-original="https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/13671/image-20221109142143712.png" alt="image-20221109142143712"></li>
+<li>session：一次会话范围，只要session没有过期失效，不管采取的是哪种方式，都可以获取到。但是面对图下情况，两个客户端分别访问不同的servlet，不可以获取到，因为不是同一个session。 <img src="/img/loading.gif" data-original="https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/13671/image-20221109143129002.png" alt="image-20221109143129002"></li>
+<li>application：整个应用程序范围，相当于是公共的，不同客户端都可以取到。需要获取application保存作用域保存的数据：servlet上下文<code>ServletContext application = request.getServletContext();</code><img src="/img/loading.gif" data-original="https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/13671/image-20221109144201882.png" alt="image-20221109144201882"></li>
+</ul>
+</li>
+</ol>
+<h4 id="5-路径问题"><a href="#5-路径问题" class="headerlink" title="5.路径问题"></a>5.路径问题</h4><p>相对路径和绝对路径，略。<img src="/img/loading.gif" data-original="https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/13671/image-20221109151417746.png" alt="image-20221109151417746">需要注意的是可以写成下面那两行那样的：@{}就相当于<code>localhost：8080/pro10/</code>了</p>
+<h4 id="6-小实战1（2-3-4跳）"><a href="#6-小实战1（2-3-4跳）" class="headerlink" title="6.小实战1（2 3 4跳）"></a>6.小实战1（2 3 4跳）</h4><ol>
+<li>只要不是<em><strong>form表单提交，或者method&#x3D;post</strong></em>，都是<em><strong>get请求</strong></em>。</li>
+<li>隐藏域：功能类似于文本框，它的值会随着表单的发送也会发送给服务器，但是界面上看不到。</li>
+</ol>
+<h4 id="7-review-和234有关"><a href="#7-review-和234有关" class="headerlink" title="7.review(和234有关)"></a>7.review(和234有关)</h4><h3 id="6-servlet-mvc优化（重要）"><a href="#6-servlet-mvc优化（重要）" class="headerlink" title="6.servlet-mvc优化（重要）"></a>6.servlet-mvc优化（重要）</h3><h4 id="1-旧的结构："><a href="#1-旧的结构：" class="headerlink" title="1.旧的结构："></a>1.旧的结构：<img src="/img/loading.gif" data-original="https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/13671/image-20221110110700389.png" alt="image-20221110110700389"></h4><h4 id="2-新的结构："><a href="#2-新的结构：" class="headerlink" title="2.新的结构："></a>2.新的结构：<img src="/img/loading.gif" data-original="https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/13671/image-20221110144853740.png" alt="image-20221110144853740"></h4><ul>
+<li>将几个servlet进行功能集合：将增删改查几个功能做成方法集成在一个servlet中。</li>
+<li>通过if判断：如果请求是空的，那么就赋给请求”index”，进入index页面。如果请求不是空的，进入switch语句判断：是什么就进入对应什么的页面。</li>
+</ul>
+<h4 id="3-修改："><a href="#3-修改：" class="headerlink" title="3.修改："></a>3.修改：</h4><p>不用switch语句，而用method属性进行获取方法，遍历methods方法列表进行if判断：如果方法名和operate值相等，就用反射执行这个语句。但是会有弊端：这只是一个servlet中遍历各种方法，如果是多个servlet呢？每个servlet都要写反射吗？——&gt;引出<strong>DispatcherServlet：核心控制器&#x2F;中央控制器</strong>：处理所有请求，根据请求的不同来赋值给后面的不同servlet，再根据不同的servlet赋值给不同的方法上去。</p>
+<h4 id="4-引出mvc原理："><a href="#4-引出mvc原理：" class="headerlink" title="4.引出mvc原理："></a>4.<em><strong>引出mvc原理</strong></em>：<img src="/img/loading.gif" data-original="https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/13671/image-20221110153737609.png" alt="image-20221110153737609"></h4><ol>
+<li>servlet接收<code>*.do</code>:意思是所有的访问请求都会由这个servlet进行接收处理。</li>
+<li>获取该请求的servletpath，比如 &#x2F;hello.do</li>
+<li>进行字符串截取：&#x2F;hello.do——&gt;hello</li>
+<li>对应下级servlet（controller）：hello——–&gt;helloController，此时helloservlet将不复存在，而是把原来的servlet类改为普通类。<em><strong>那么如何对应controller？</strong></em>：通过配置文件<em><strong>applicationContext.xml</strong></em>进行约定——&gt;JavaBeans:设置<bean>标签的id和class属性，作用：servletPath中涉及的名字对应的是你设置的这个id，就用class路径对应的controller类来处理。<em><strong>约定好了applicationContext.xml如何将DispatcherServlet联系起来？</strong></em>——–&gt;通过DispatcherServlet的构造方法，用流获取applicationContext.xml文件的内容：然后<ul>
+<li>创建DocumentBuilderFactory对象</li>
+<li>创建DocumentBuilder对象</li>
+<li>创建Document对象（org.3c.dom）,传入配置文件的流。</li>
+<li>获取所有的bean节点：调用对象的方法getElementsByTagId并传入bean，得到beanNodeList</li>
+<li>for循环这个List获取每一个节点然后进行if判断，如果这个节点是元素节点，就获取它的id和name属性，通过name（全类名），找到它的对象，<strong>再把id和这个对象存入hashmap中（即解析好后放入map容器中）</strong>。</li>
+<li><em><strong>总结：</strong></em>这样通过<bean>中的标签设定，通过DispatcherServlet能直接由路径找到对应的controller，然后再用笔记6.3中的步骤（<em><strong>赋operate的值</strong></em>），获取这个controller中的对应方法，然后反射执行，<strong>即：设置<bean>标签中的id和controller的全类名，就可以直接通过访问路径来执行对应controller。</strong><img src="/img/loading.gif" data-original="https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/13671/image-20221110171221576.png" alt="image-20221110171221576"></li>
+</ul>
+</li>
+</ol>
+<h4 id="5-提取视图资源通用代码："><a href="#5-提取视图资源通用代码：" class="headerlink" title="5.提取视图资源通用代码："></a>5.提取视图资源通用代码：</h4><p>继续修改：</p>
+<ul>
+<li>因为controller中每个方法都要重定向，不妨放在DispatcherServlet进行统一调度：即controller中方法结束直接return “redirect:xxx页面”（视频中的更新功能要给用户展示更新后的界面，因此更新方法最后需要跳转进入fruit界面，也就是刷新一下fruit界面）</li>
+<li>然后在DispatcherServlet获取该方法的反射调用后的返回值</li>
+<li>然后进行视图处理：也就是在DispatcherServlet中进行真正的重定向。如果返回值没有redirect前缀，则直接进入页面。</li>
+</ul>
+<h4 id="6-在DispatcherServlet中统一获取参数以及视图处理："><a href="#6-在DispatcherServlet中统一获取参数以及视图处理：" class="headerlink" title="6.在DispatcherServlet中统一获取参数以及视图处理："></a>6.在DispatcherServlet中统一获取参数以及视图处理：</h4><ol>
+<li>将在controller中的各种方法中的<code>request.getParameter(&quot;xxx&quot;)</code>删除，转而在形参列表获取参数（此时还没有将request中的字段和形参列表的参数联合起来），降低耦合。</li>
+<li>在DispatcherServlet中统一获取参数：先for循环获取所有方法，然后每个方法用<code>method.getParameters()</code>获取当前方法的形参，返回的是数组，需要设置（因为数组中显示的是arg0，arg1…而不是显示形参的名字：在idea中设置build–&gt;java compiler<img src="/img/loading.gif" data-original="https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/13671/image-20221112140308195.png" alt="image-20221112140308195">并且添加如图参数)，这样就能获取方法的形参。</li>
+<li>再遍历<code>2.</code>中获取的数组，循环得到方法的名字（<code>2.</code>中返回的是对象）</li>
+<li>再判断获取的形参属于什么类型（request？response？session？），那么就不是通过请求中获取参数的方式了。</li>
+<li><strong>总结：在controller中不需要先获取request中的parameter了，只需在形参列表规定好，DispatcherServlet会自动获取。</strong></li>
+</ol>
+<h4 id="7-总结："><a href="#7-总结：" class="headerlink" title="7.总结："></a>7.总结：</h4><h5 id="1-优化总结："><a href="#1-优化总结：" class="headerlink" title="1.优化总结："></a>1.优化总结：</h5><ol>
+<li>开始是一个请求对应一个servlet，会导致servlet过多——&gt;<strong>用一个servlet判断，通过operate的值来决定调用servlet中的哪个方法(controller)。</strong></li>
+<li>servlet如何调用方法？—–&gt;<strong>判断operate的赋的值和方法名是否一致：一致就反射调用，否则抛异常。</strong></li>
+<li>每个servlet都反射，如何优化？—-&gt;<strong>设置中央控制器DispatcherServlet</strong></li>
+<li>DispatcherServlet都有何功能？——&gt;</li>
+</ol>
+<h5 id="2-DispatcherServlet的功能："><a href="#2-DispatcherServlet的功能：" class="headerlink" title="2.DispatcherServlet的功能："></a>2.<strong>DispatcherServlet的功能：</strong></h5><ol>
+<li><ul>
+<li><strong>通过访问路径和读取applicationContext.xml</strong>(通过dom技术去解析xml文件，在中央控制器形成一个beanMap容器，用来存放所有的Controller组件)<strong>的设置，匹配到对应controller。</strong></li>
+<li><strong>然后根据operate的值，通过反射调用controller中的对应方法。</strong></li>
+</ul>
+</li>
+<li><ul>
+<li>获取参数，也就是<strong>直接读取形参列表的参数，直接在形参列表设置要读取的request字段</strong>：获取即将要调用的方法的参数签名信息存放在数组，然后获取名称，参数值。通过获取类型，还要考虑类型转换。</li>
+<li><strong>执行方法</strong>：通过反射执行方法。</li>
+<li>视图处理：获取反射的返回值，如果返回值的字符串匹配”redirect:xxx”，就重定向哪，否则匹配xxx，就…，以此类推。也就是<strong>根据方法的返回值字符串来完成跳转的操作。</strong></li>
+</ul>
+</li>
+</ol>
+<h3 id="7-servlet-api"><a href="#7-servlet-api" class="headerlink" title="7.servlet-api"></a>7.servlet-api</h3><h4 id="1-servlet初始化："><a href="#1-servlet初始化：" class="headerlink" title="1.servlet初始化："></a>1.servlet初始化：</h4><ul>
+<li>如果我们想在servlet初始化阶段带一些值，可以重写init()。</li>
+<li>前提是要在web.xml中的servlet标签中配置<init-param>的kv值，然后再init方法中获取config对象，获取初始化参数值（v值）。</li>
+<li>或者使用注解也可以，<code>@WebServlet(urlPatterns=&#123;&quot;xxxx&quot;&#125;,initParams=&#123;@WebInitParam(name=&quot;xxx&quot;,value=&quot;xxx&quot;),@WebInitParam....以此类推&#125;)</code></li>
+</ul>
+<h4 id="2-servlet上下文设置一些值："><a href="#2-servlet上下文设置一些值：" class="headerlink" title="2.servlet上下文设置一些值："></a>2.servlet上下文设置一些值：</h4><ul>
+<li>在web.xml中配置<context-param>，设置kv值。可以再初始化中获取：getServletContext()。</li>
+<li>在服务方法中也可以通过request对象获取：req.getSession.getServletContext。</li>
+<li>获取初始化值servletContext.getInitParameter()。</li>
+</ul>
+<h2 id="3-mvc-service的引入"><a href="#3-mvc-service的引入" class="headerlink" title="3.mvc-service的引入"></a>3.mvc-service的引入</h2><ol>
+<li>什么是业务层：</li>
+</ol>
+<ul>
+<li>model1(jsp)和model2(mvc),mvc：<em><strong>mode</strong>l(有很多种，简单的pojo，难的如业务模型组件，数据访问层组件：</em>*pojo&#x2F;vo，dao,bo**，bo是业务模型组件),<strong>view</strong>(视图，网页，和用户交互),<strong>controller</strong>(控制器，接待请求)*。</li>
+<li>区分业务对象和数据访问对象：dao中的方法都是<strong>单精度方法</strong>（一个方法只考虑一个操作），bo中的方法是复杂的业务方法，如注册功能，需要多个dao方法的组合调用，才能完成这个功能。</li>
+</ul>
+<ol start="2">
+<li>引入业务层<strong>（重点）</strong>：</li>
+</ol>
+<ul>
+<li><p><strong>为什么要有业务层？</strong>：以前调用controller里面的各种业务方法，业务方法里还有很多dao层方法重复写，会让controller方法代码冗余。现在在controller层和dao层中添加service层，<strong>许多dao层方法的调用集合到service层</strong>，<strong>controller层调用service层的方法</strong>实现更复杂的业务逻辑。实现了解耦。<img src="/img/loading.gif" data-original="https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/13671/image-20221114094409956.png" alt="image-20221114094409956"></p>
+</li>
+<li><p><strong>ioc</strong>：<strong>耦合&#x2F;依赖</strong>：层与层的设计是依赖的，不能离开，也叫耦合。系统架构和设计的一个原则是：<em>高内聚，低耦合。</em></p>
+</li>
+<li><p>以前是在controller中new xxxServiceImpl，才能调用service方法，现在为了降低耦合———&gt;如何做？</p>
+</li>
+<li><p><strong>如何反射创建对象？</strong>—-&gt;io流读取applicationContext.xml，创建document对象，获取bean节点，放入map容器中。（前文中有讲过）</p>
+</li>
+<li><p><strong>原理1（重点！）</strong>：在applicationContext.xml中配置bean，bean就是组件，spring通过<strong>控制反转</strong>（<strong>创建好Map容器，反射创建对象，放入map中，key是对象名，value是创建好的对象。</strong>beanFacatory接口中定义getbean方法，在ClassPathXmlApplicationContext中实现：<strong>根据id从map容器中获取对象</strong>。），bean的id是对象名，class是哪个类的对象。</p>
+</li>
+<li><p>修改dispatcherservlet：在其中的初始化方法中添加beanFactory对象，即当dispatcherservlet加载时自动创建beanFactory对象。</p>
+</li>
+<li><p><strong>原理2（原理1是知道了需要哪些组件，但是还不知道组件和组件之间的关系）</strong>：在<bean>标签中设置属性，即用<property>标签设置：<name>是属性名，<ref>是引用其他bean的id值。即描述<strong>bean之间的调用关系</strong>。</p>
+</li>
+<li><p><property>标签的<strong>调用关系是怎么实现</strong>的？——&gt;承接上文，在ClassPathXmlApplicationContext中获取对象之后，需要组装bean之间的依赖关系：for循环拿到每一个bean（map中的对象），读取bean中的内容（怎么读取？再次for循环，判断是否为元素节点并且节点名是否为property，然后取出name属性和ref属性），通过ref的值找到对应的对象（<strong>在map中找到那个ref的bean对象，这个叫对象a</strong>），然后给当前bean对象的name属性赋值（<strong>在map中找到当前对象，叫对象b</strong>）。获取当前对象（b）的属性，并改为ref对象（a）的属性。简单来说就是，<strong>引用谁（ref哪个类）要赋给谁（bean中的属性名name）。</strong></p>
+</li>
+<li><p>**在bean类中：Ref  name &#x3D; new ref()**。<img src="/img/loading.gif" data-original="https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/13671/image-20221114152258719.png" alt="image-20221114152258719"></p>
+</li>
+</ul>
+<ol start="3">
+<li>总结：<strong>控制反转（ioc）和依赖注入（di）</strong>： 以上。</li>
+</ol>
+<h2 id="4-filter过滤器"><a href="#4-filter过滤器" class="headerlink" title="4.filter过滤器"></a>4.filter过滤器</h2><ol>
+<li>在客户端和servlet中间有过滤器<img src="/img/loading.gif" data-original="https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/13671/image-20221116160715963.png" alt="image-20221116160715963">客户端发来请求和接收响应，浏览器执行请求和进行响应都会经过过滤器。</li>
+<li>如何实现过滤器？——&gt; servlet类实现 Filter（注意是javax.servlet.Filter的包），配置<code>@WebFilter(&quot;拦截路径&quot;)</code>也可以在web.xml中添加路径，和servlet一样，只是servlet换成filter。</li>
+<li>如何<strong>放行</strong>？——-&gt;重写doFilter方法，<code>filterChain.doFilter(servletreq..,servletrsp..)</code>然后执行service</li>
+<li>当执行完响应时，又会拦截住，执行<code>filterChain.doFilter</code>这句话之后的代码。</li>
+<li>可以设置通配符，如 *.do ，表示 .do结尾的都拦截。</li>
+<li>过滤器链：过滤器的角色不一样，每个过滤器各司其职。<img src="/img/loading.gif" data-original="https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/13671/image-20221116162920268.png" alt="image-20221116162920268">要配置链的话，<strong>注解按全类名排序顺序，xml配置文件按配置的顺序。</strong></li>
+<li>过滤器的应用：<img src="/img/loading.gif" data-original="https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/13671/image-20221116163631858.png" alt="image-20221116163631858"></li>
+<li>事务管理的应用：</li>
+</ol>
+<ul>
+<li><p><img src="/img/loading.gif" data-original="https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/13671/image-20221116165721420.png" alt="image-20221116165721420"></p>
+</li>
+<li><p>所以事务管理就不能在dao层进行操作，需要在service层进行管理：<img src="/img/loading.gif" data-original="https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/13671/image-20221116170127588.png" alt="image-20221116170127588"></p>
+</li>
+<li><p>继续将事务管理提前<img src="/img/loading.gif" data-original="https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/13671/image-20221116171002030.png" alt="image-20221116171002030"><img src="/img/loading.gif" data-original="https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/13671/image-20221116171253056.png" alt="image-20221116171253056">因为之前需要同一个connection，所以使用threadlocal来管理，设置好conn，之后get即可。</p>
+</li>
+<li><p>事务管理涉及到的组件：</p>
+<p>OpenSessionInviewFilter<br>TransactionManager</p>
+<p>ThreadLoca</p>
+<p>ConnUtil<br>BaseDAO</p>
+</li>
+</ul>
+<ol start="9">
+<li>ThreadLocal</li>
+</ol>
+<ul>
+<li>本地线程：我们可以通过set方法在当前线程上存储数据、通过get方法在当前线程上获取数据。get(),set(obj)</li>
+</ul>
+<h3 id="4-01-Listener监听器"><a href="#4-01-Listener监听器" class="headerlink" title="4.01 Listener监听器"></a>4.01 Listener监听器</h3><p>1. </p>
+<ul>
+<li><p>servletContextListener：监听<strong>servletContext对象</strong>的创建和销毁的过程（观察者模式）。</p>
+</li>
+<li><p>HttpSessionListener-监听HttpSession对象的创建和销毁的过程。</p>
+</li>
+<li><p>ServletRequestListener-监听ServletRequest对象的创建和销毁的过程。</p>
+</li>
+</ul>
+<p>2. </p>
+<ul>
+<li>ServletContextAttributeListener-监听ServletContext的保存作用域的改动（add,remove,replace）</li>
+<li>HttpsessionAttributeListener-监听Httpsession的保存作用域的改动(add,remove,replace)</li>
+<li>ServletRequestAttributeListener-监听ServletRequest的保存作用域的改动(add,remove,replace)</li>
+</ul>
+<p>3. </p>
+<ul>
+<li>HttpsessionBindingListener-监听某个对象在Sessioni域中的创建与移除</li>
+<li>HttpSessionActivationListener-监听某个对象在Sessioni域中的序列化和反序列化</li>
+</ul>
+<ol start="4">
+<li>用哪个listener，servlet实现对应的接口，重写方法，加<code>@WebListener</code>注解，或者在web.xml中配置:<listener>标签。</li>
+<li>监听上下文启动，在上下文启动的时候去创建虹oc容器，然后将其保存到application作用域。后面中央控制器再从application作用域中去获取IOC容器。</li>
+<li><strong>dao组件有多个方法，同一个线程，才能共享数据，可以从线程上面获取。（像旋转火锅）</strong></li>
+</ol>
+<h3 id="4-02大总结"><a href="#4-02大总结" class="headerlink" title="4.02大总结"></a>4.02大总结</h3><p><img src="/img/loading.gif" data-original="https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/13671/image-20221116214218150.png" alt="image-20221116214218150"></p>
+<h2 id="5-QQZone"><a href="#5-QQZone" class="headerlink" title="5.QQZone"></a>5.QQZone</h2><h2 id="6-书城"><a href="#6-书城" class="headerlink" title="6.书城"></a>6.书城</h2><h2 id="7-Cookie"><a href="#7-Cookie" class="headerlink" title="7.Cookie"></a>7.Cookie</h2><ol>
+<li><p>什么是cookie？—–&gt;浏览器分配给客户端的session id是以cookie的形式保存的。<strong>cookie是在客户端保存数据的，session是在服务器端保存数据的。</strong></p>
+</li>
+<li><p>怎么保存数据？——&gt;创建cookie并保存：<img src="/img/loading.gif" data-original="https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/13671/image-20221114161229856.png" alt="image-20221114161229856"></p>
+</li>
+<li><p>设置cookie的有效时长为60秒：cookie.setMaxAge(60)。</p>
+</li>
+<li><p>cookie的path和domain:随着本地cookie越来越多，每次访问时不能全把cookie带上。浏览器会通过这两个属性和访问地址作比较，从而决定是否携带这个cookie。</p>
+<p><code>cookie.setDomain (pattern);</code><br><code>cookie.setpath(url);</code></p>
+</li>
+<li><p>cookie的应用：记住用户名和密码，免登录等等。注意cookie是保存在本地的，所以最好在自己的设备上保存。</p>
+</li>
+</ol>
+<h3 id="6-kaptcha技术："><a href="#6-kaptcha技术：" class="headerlink" title="6.kaptcha技术："></a>6.kaptcha技术：</h3><ol>
+<li>验证码：为什么需要？—–&gt;防止恶意攻击。</li>
+<li>如何使用？——&gt;在web.xml文件中注册KaptchaServlet，并设置验证码图片的相关属性。</li>
+<li>在html中设置一个img标签，设置src等于KaptchaServlet对应的url-pattern</li>
+<li>kaptcha验证码图片的各个属性在常量接口：Constants中</li>
+<li>KaptchaServlet在生成验证码图片时，会同时将验证码信息保存到session中<br>因此，我们在注册请求时，首先用户文本框中输入的验证码值和session中保存的值进行比较，相等，则进行注册。</li>
+</ol>
+<h2 id="8-正则表达式（8和8以下js）"><a href="#8-正则表达式（8和8以下js）" class="headerlink" title="8.正则表达式（8和8以下js）"></a>8.正则表达式（8和8以下js）</h2><ol>
+<li>定义正则表达式对象：</li>
+</ol>
+<ul>
+<li>对象形式<code>var reg = new RegExp(&quot;abc&quot;)</code></li>
+<li>直接量形式<code>var reg = /abv/</code></li>
+<li>匹配模式：g全局匹配，i忽略大小写匹配，m多行匹配，gim可以组合使用（不区分先后顺序）。<code>var reg = new RegExp(&quot;abc&quot;，&quot;gim&quot;);</code>,<code>var reg = /abv/igm;</code>意思相同。</li>
+</ul>
+<ol>
+<li>定义待校验的字符串</li>
+<li>校验</li>
+<li>元字符：<img src="/img/loading.gif" data-original="https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/13671/image-20221117103833384.png" alt="image-20221117103833384"></li>
+<li>字符集合：<img src="/img/loading.gif" data-original="https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/13671/image-20221117104406045.png" alt="image-20221117104406045">中括号[ ]：若目标字符串有中括号中的<strong>任意一个</strong>就可以匹配。不加中括号必须精确匹配，如&#x2F;abc&#x2F;，目标字符串必须有连续的abc才行。</li>
+</ol>
+<p>​		中括号加小尖号^,表示目标字符串有除括号内以外的才匹配。</p>
+<p>-：表示范围，从哪儿到哪儿。</p>
+<ol start="5">
+<li>出现次数：<img src="/img/loading.gif" data-original="https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/13671/image-20221117105110911.png" alt="image-20221117105110911"></li>
+<li>或者：|</li>
+<li>常用正则表达式：<img src="/img/loading.gif" data-original="https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/13671/image-20221117105612026.png" alt="image-20221117105612026"></li>
+<li>注意：一般使用正则表达式，百度就行。</li>
+</ol>
+<h2 id="9-Vue"><a href="#9-Vue" class="headerlink" title="9.Vue"></a>9.Vue</h2><ol>
+<li><p>传统js创建对象的两种方式：<img src="/img/loading.gif" data-original="https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/13671/image-20221117110334903.png" alt="image-20221117110334903"></p>
+</li>
+<li><p>vue创建对象的的方式：<img src="/img/loading.gif" data-original="https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/13671/image-20221117110634735.png" alt="image-20221117110634735">快速定位操作的对象，省去了传统的获取步骤。</p>
+</li>
+<li><p>绑定元素的属性：v-bind表示绑定value属性，v-bind可以省略，直接写成：  。v-model表示双向绑定：以前msg的值决定输入框的内容，现在v-model可以让输入框的值来改变msg</p>
+</li>
+<li><p>v-model：value可以直接写成，v-model&#x3D;xxx。trim可以去除首尾空格：v-model.trim&#x3D;xxx。输入框内容的首尾空格会被去除掉。</p>
+</li>
+<li><p>v-if,v-else,v-show:if-else可以进行编程操作，但是v-if和v-else之间不能有其他节点。v-show:根据&#x3D;的值的true或false来决定display的值（也就是显示或者不显示）。</p>
+</li>
+<li><p>迭代v-for：语法v-for&#x3D;”xxx in xxx”，for循环。</p>
+</li>
+<li><p>v-on，事件驱动与事件绑定：之前是onclick：”方法”，现在v-on:click&#x3D; “方法”（注意在这儿的方法意思是调用，不能加()，加了括号意思是方法的返回值）。split（”x”）：意思是以x分割，若什么都不写就是把每个字符都分割。v-on:click可以简写为@click</p>
+</li>
+<li><p>&#96;&#96;&#96;js<br>var vue &#x3D; new Vue({<br>data:{&#x2F;&#x2F;自己定义的变量<br>    msg:”hello”<br>}<br>methods:{<br>    xxx:function(){&#x2F;&#x2F;自己定义的方法名<br>        this.msg.spilt(“”).reverse().join(“”)&#x2F;&#x2F;翻转字符串<br>    }<br>}<br>})</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">9. function(event)可以获取鼠标坐标：![image-20221117163406629](https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/13671/image-20221117163406629.png)</span><br><span class="line"></span><br><span class="line">10. 侦听属性：watch</span><br><span class="line"></span><br><span class="line">```js</span><br><span class="line">xxx:function(newValue)&#123; //监视xxx这个属性的变化，如果它变了，就继续操作。</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ol>
+<p>11.vue对象的生命周期：对象创建之前和之后，数据装配之前之后，数据加载之前之后</p>
+<h2 id="10-Axios"><a href="#10-Axios" class="headerlink" title="10.Axios"></a>10.Axios</h2><ol>
+<li>Axios是Ajax的一个框架，简化Ajax的操作。</li>
+<li>Axios执行Ajax的操作步骤：</li>
+</ol>
+<ul>
+<li><p>添加并引入axios的js文件。</p>
+</li>
+<li><p>客户端向服务器端异步发送参数值。</p>
+</li>
+<li><p>如何发送？——-&gt;前端部分：<img src="/img/loading.gif" data-original="https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/13671/image-20221130190747659.png" alt="image-20221130190747659">后端部分：接收打印<img src="/img/loading.gif" data-original="https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/13671/image-20221130191159733.png" alt="image-20221130191159733"></p>
+</li>
+<li><p><img src="/img/loading.gif" data-original="https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/13671/image-20221130191328468.png" alt="image-20221130191328468"></p>
+</li>
+</ul>
+<p><img src="/img/loading.gif" data-original="https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/13671/image-20221130191337967.png" alt="image-20221130191337967"></p>
+<ul>
+<li>当点击按钮触发axios时，axios会发送一个带普通请求参数值的异步请求，服务器端接收。</li>
+<li>那么如何进行响应？——&gt;设置编码然后响应<img src="/img/loading.gif" data-original="https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/13671/image-20221130191748047.png" alt="image-20221130191748047"></li>
+<li><img src="/img/loading.gif" data-original="https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/13671/image-20221130192047993.png" alt="image-20221130192047993">前端接收打印结果（成功响应时进行，否则catch），有问题会执行catch（异常处理)。</li>
+</ul>
+<ol start="3">
+<li>发送的请求体是json格式（客户端向服务器发送的是json格式的数据）：</li>
+</ol>
+<ul>
+<li>json：是一种数据格式，kv值显示，有点类似python的字典。json表达数据更简单。json很灵活，内容可以是各种数据类型，可以是对象，可以是json嵌套。<img src="/img/loading.gif" data-original="https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/13671/image-20221130204753250.png" alt="image-20221130204753250"></li>
+<li>重点：<img src="/img/loading.gif" data-original="https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/13671/image-20221130211007627.png" alt="image-20221130211007627"></li>
+<li>如何使用：<img src="/img/loading.gif" data-original="https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/13671/image-20221130210828093.png" alt="image-20221130210828093"></li>
+<li>若user是从数据库查出来的，需要将java对象转换为json格式的字符串，响应给客户端<img src="/img/loading.gif" data-original="https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/13671/image-20221130211646041.png" alt="image-20221130211646041">mime-type是告诉浏览器响应的是什么数据。</li>
+<li><img src="/img/loading.gif" data-original="https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/13671/image-20221130212114478.png" alt="image-20221130212114478"><img src="/img/loading.gif" data-original="https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/13671/image-20221130212304770.png" alt="image-20221130212304770"><img src="/img/loading.gif" data-original="https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/13671/image-20221130212330368.png" alt="image-20221130212330368"></li>
+<li>前后端分离：<img src="/img/loading.gif" data-original="https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/13671/image-20221130212431746.png" alt="image-20221130212431746"></li>
+</ul>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="http://example.com">Ahao</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2022/12/24/JavaWeb%E7%AC%94%E8%AE%B0/">http://example.com/2022/12/24/JavaWeb笔记/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">AhaosBlog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/javaweb/">javaweb</a></div><div class="post_share"><div class="social-share" data-image="https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/13671/wallhaven-weqm37.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2022/12/23/JavaSE%E7%AC%94%E8%AE%B0/"><img class="next-cover" src="/img/loading.gif" data-original="https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/13671/wallhaven-weqm37.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">hsp JavaSE复习</div></div></a></div></nav><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="twikoo-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/loading.gif" data-original="https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/13671/QQavatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Ahao</div><div class="author-info__description">生活原本平静，但跑起来就有风。</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">2</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">2</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/Ahao0911"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/Ahao0911" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="https://blog.csdn.net/qq_55923034?type=blog" target="_blank" title="CSDN"><i class="fa fa-book-open"></i></a><a class="social-icon" href="mailto:571740336@qq.com" target="_blank" title="Email"><i class="fas fa-envelope-open-text"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#JavaWeb%E7%AC%94%E8%AE%B0"><span class="toc-number">1.</span> <span class="toc-text">JavaWeb笔记</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-js%E7%AE%80%E5%8D%95%E5%A4%8D%E4%B9%A0"><span class="toc-number">1.1.</span> <span class="toc-text">1. js简单复习</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E9%BC%A0%E6%A0%87%E6%82%AC%E5%81%9C%E6%95%88%E6%9E%9C%E5%AE%9E%E7%8E%B0"><span class="toc-number">1.1.1.</span> <span class="toc-text">1. 鼠标悬停效果实现</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-HTTP%E5%8D%8F%E8%AE%AE"><span class="toc-number">1.1.2.</span> <span class="toc-text">4.HTTP协议</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E8%AF%B7%E6%B1%82%E5%92%8C%E5%93%8D%E5%BA%94%EF%BC%9A"><span class="toc-number">1.1.2.1.</span> <span class="toc-text">1.请求和响应：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E4%BC%9A%E8%AF%9D%EF%BC%9A"><span class="toc-number">1.1.2.2.</span> <span class="toc-text">2.会话：</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-http%E6%97%A0%E7%8A%B6%E6%80%81%EF%BC%9A"><span class="toc-number">1.1.2.2.1.</span> <span class="toc-text">1. http无状态：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-%E4%BC%9A%E8%AF%9D%E8%B7%9F%E8%B8%AA%E6%8A%80%E6%9C%AF%EF%BC%9A"><span class="toc-number">1.1.2.2.2.</span> <span class="toc-text">2.会话跟踪技术：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-%E4%BF%9D%E5%AD%98%E4%BD%9C%E7%94%A8%E5%9F%9F%EF%BC%9A"><span class="toc-number">1.1.2.2.3.</span> <span class="toc-text">3.保存作用域：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#4-%E5%86%85%E9%83%A8%E8%BD%AC%E5%8F%91%E5%92%8C%E9%87%8D%E5%AE%9A%E5%90%91"><span class="toc-number">1.1.2.2.4.</span> <span class="toc-text">4.内部转发和重定向</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-Thymeleaf-%E8%A7%86%E5%9B%BE%E6%A8%A1%E6%9D%BF%E6%8A%80%E6%9C%AF"><span class="toc-number">1.1.3.</span> <span class="toc-text">5. Thymeleaf-视图模板技术</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8"><span class="toc-number">1.1.3.1.</span> <span class="toc-text">1.快速入门</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E6%B8%B2%E6%9F%93index%E9%A1%B5%E9%9D%A2"><span class="toc-number">1.1.3.2.</span> <span class="toc-text">2.渲染index页面</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-thymeleaf-review"><span class="toc-number">1.1.3.3.</span> <span class="toc-text">3.thymeleaf review</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-%E4%BF%9D%E5%AD%98%E4%BD%9C%E7%94%A8%E5%9F%9F"><span class="toc-number">1.1.3.4.</span> <span class="toc-text">4.保存作用域</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-%E8%B7%AF%E5%BE%84%E9%97%AE%E9%A2%98"><span class="toc-number">1.1.3.5.</span> <span class="toc-text">5.路径问题</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-%E5%B0%8F%E5%AE%9E%E6%88%981%EF%BC%882-3-4%E8%B7%B3%EF%BC%89"><span class="toc-number">1.1.3.6.</span> <span class="toc-text">6.小实战1（2 3 4跳）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#7-review-%E5%92%8C234%E6%9C%89%E5%85%B3"><span class="toc-number">1.1.3.7.</span> <span class="toc-text">7.review(和234有关)</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-servlet-mvc%E4%BC%98%E5%8C%96%EF%BC%88%E9%87%8D%E8%A6%81%EF%BC%89"><span class="toc-number">1.1.4.</span> <span class="toc-text">6.servlet-mvc优化（重要）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E6%97%A7%E7%9A%84%E7%BB%93%E6%9E%84%EF%BC%9A"><span class="toc-number">1.1.4.1.</span> <span class="toc-text">1.旧的结构：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E6%96%B0%E7%9A%84%E7%BB%93%E6%9E%84%EF%BC%9A"><span class="toc-number">1.1.4.2.</span> <span class="toc-text">2.新的结构：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E4%BF%AE%E6%94%B9%EF%BC%9A"><span class="toc-number">1.1.4.3.</span> <span class="toc-text">3.修改：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-%E5%BC%95%E5%87%BAmvc%E5%8E%9F%E7%90%86%EF%BC%9A"><span class="toc-number">1.1.4.4.</span> <span class="toc-text">4.引出mvc原理：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-%E6%8F%90%E5%8F%96%E8%A7%86%E5%9B%BE%E8%B5%84%E6%BA%90%E9%80%9A%E7%94%A8%E4%BB%A3%E7%A0%81%EF%BC%9A"><span class="toc-number">1.1.4.5.</span> <span class="toc-text">5.提取视图资源通用代码：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-%E5%9C%A8DispatcherServlet%E4%B8%AD%E7%BB%9F%E4%B8%80%E8%8E%B7%E5%8F%96%E5%8F%82%E6%95%B0%E4%BB%A5%E5%8F%8A%E8%A7%86%E5%9B%BE%E5%A4%84%E7%90%86%EF%BC%9A"><span class="toc-number">1.1.4.6.</span> <span class="toc-text">6.在DispatcherServlet中统一获取参数以及视图处理：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#7-%E6%80%BB%E7%BB%93%EF%BC%9A"><span class="toc-number">1.1.4.7.</span> <span class="toc-text">7.总结：</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-%E4%BC%98%E5%8C%96%E6%80%BB%E7%BB%93%EF%BC%9A"><span class="toc-number">1.1.4.7.1.</span> <span class="toc-text">1.优化总结：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-DispatcherServlet%E7%9A%84%E5%8A%9F%E8%83%BD%EF%BC%9A"><span class="toc-number">1.1.4.7.2.</span> <span class="toc-text">2.DispatcherServlet的功能：</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-servlet-api"><span class="toc-number">1.1.5.</span> <span class="toc-text">7.servlet-api</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-servlet%E5%88%9D%E5%A7%8B%E5%8C%96%EF%BC%9A"><span class="toc-number">1.1.5.1.</span> <span class="toc-text">1.servlet初始化：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-servlet%E4%B8%8A%E4%B8%8B%E6%96%87%E8%AE%BE%E7%BD%AE%E4%B8%80%E4%BA%9B%E5%80%BC%EF%BC%9A"><span class="toc-number">1.1.5.2.</span> <span class="toc-text">2.servlet上下文设置一些值：</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-mvc-service%E7%9A%84%E5%BC%95%E5%85%A5"><span class="toc-number">1.2.</span> <span class="toc-text">3.mvc-service的引入</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-filter%E8%BF%87%E6%BB%A4%E5%99%A8"><span class="toc-number">1.3.</span> <span class="toc-text">4.filter过滤器</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-01-Listener%E7%9B%91%E5%90%AC%E5%99%A8"><span class="toc-number">1.3.1.</span> <span class="toc-text">4.01 Listener监听器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-02%E5%A4%A7%E6%80%BB%E7%BB%93"><span class="toc-number">1.3.2.</span> <span class="toc-text">4.02大总结</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-QQZone"><span class="toc-number">1.4.</span> <span class="toc-text">5.QQZone</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-%E4%B9%A6%E5%9F%8E"><span class="toc-number">1.5.</span> <span class="toc-text">6.书城</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-Cookie"><span class="toc-number">1.6.</span> <span class="toc-text">7.Cookie</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#6-kaptcha%E6%8A%80%E6%9C%AF%EF%BC%9A"><span class="toc-number">1.6.1.</span> <span class="toc-text">6.kaptcha技术：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%EF%BC%888%E5%92%8C8%E4%BB%A5%E4%B8%8Bjs%EF%BC%89"><span class="toc-number">1.7.</span> <span class="toc-text">8.正则表达式（8和8以下js）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#9-Vue"><span class="toc-number">1.8.</span> <span class="toc-text">9.Vue</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#10-Axios"><span class="toc-number">1.9.</span> <span class="toc-text">10.Axios</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2022/12/24/JavaWeb%E7%AC%94%E8%AE%B0/" title="JavaWeb笔记"><img src="/img/loading.gif" data-original="https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/13671/wallhaven-weqm37.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="JavaWeb笔记"/></a><div class="content"><a class="title" href="/2022/12/24/JavaWeb%E7%AC%94%E8%AE%B0/" title="JavaWeb笔记">JavaWeb笔记</a><time datetime="2022-12-24T05:13:32.000Z" title="发表于 2022-12-24 13:13:32">2022-12-24</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/12/23/JavaSE%E7%AC%94%E8%AE%B0/" title="hsp JavaSE复习"><img src="/img/loading.gif" data-original="https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/13671/wallhaven-weqm37.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="hsp JavaSE复习"/></a><div class="content"><a class="title" href="/2022/12/23/JavaSE%E7%AC%94%E8%AE%B0/" title="hsp JavaSE复习">hsp JavaSE复习</a><time datetime="2022-12-23T10:07:15.000Z" title="发表于 2022-12-23 18:07:15">2022-12-23</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/13671/wallhaven-weqm37.jpg')"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2022 By Ahao</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="chat_btn" type="button" title="聊天"><i class="fas fa-sms"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>(()=>{
+  const init = () => {
+    twikoo.init(Object.assign({
+      el: '#twikoo-wrap',
+      envId: 'https://twikoo-api-ahao0911.vercel.app/',
+      region: '',
+      onCommentLoaded: function () {
+        btf.loadLightbox(document.querySelectorAll('#twikoo .tk-content img:not(.tk-owo-emotion)'))
+      }
+    }, null))
+  }
+
+  const getCount = () => {
+    const countELement = document.getElementById('twikoo-count')
+    if(!countELement) return
+    twikoo.getCommentsCount({
+      envId: 'https://twikoo-api-ahao0911.vercel.app/',
+      region: '',
+      urls: [window.location.pathname],
+      includeReply: false
+    }).then(function (res) {
+      countELement.innerText = res[0].count
+    }).catch(function (err) {
+      console.error(err);
+    });
+  }
+
+  const runFn = () => {
+    init()
+    GLOBAL_CONFIG_SITE.isPost && getCount()
+  }
+
+  const loadTwikoo = () => {
+    if (typeof twikoo === 'object') {
+      setTimeout(runFn,0)
+      return
+    } 
+    getScript('https://cdn.jsdelivr.net/npm/twikoo/dist/twikoo.all.min.js').then(runFn)
+  }
+
+  if ('Twikoo' === 'Twikoo' || !true) {
+    if (true) btf.loadComment(document.getElementById('twikoo-wrap'), loadTwikoo)
+    else loadTwikoo()
+  } else {
+    window.loadOtherComment = () => {
+      loadTwikoo()
+    }
+  }
+})()</script></div><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script id="click-show-text" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/click-show-text.min.js" data-mobile="true" data-text="富强,民主,文明,和谐,平等,公正,法治,爱国,敬业,诚信,友善" data-fontsize="15px" data-random="true" async="async"></script><script src="//code.tidio.co/gypmzumcgj5rt5bptgg8udo8wzbblfft.js" async="async"></script><script>function onTidioChatApiReady() {
+  window.tidioChatApi.hide();
+  window.tidioChatApi.on("close", function() {
+    window.tidioChatApi.hide();
+  });
+}
+if (window.tidioChatApi) {
+  window.tidioChatApi.on("ready", onTidioChatApiReady);
+} else {
+  document.addEventListener("tidioChat-ready", onTidioChatApiReady);
+}
+
+var chatBtnFn = () => {
+  document.getElementById("chat_btn").addEventListener("click", function(){
+    window.tidioChatApi.show();
+    window.tidioChatApi.open();
+  });
+}
+chatBtnFn()
+</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><!-- hexo injector body_end start --><script data-pjax>
+  function butterfly_clock_injector_config(){
+    var parent_div_git = document.getElementsByClassName('sticky_layout')[0];
+    var item_html = '<div class="card-widget card-clock"><div class="card-glass"><div class="card-background"><div class="card-content"><div id="hexo_electric_clock"><img class="entered loading" id="card-clock-loading" src="/img/loading.gif" data-original="https://npm.elemecdn.com/hexo-butterfly-clock/lib/loading.gif" style="height: 120px; width: 100%;" data-ll-status="loading"/></div></div></div></div></div>';
+    console.log('已挂载butterfly_clock')
+    parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+    }
+  var elist = 'null'.split(',');
+  var cpage = location.pathname;
+  var epage = 'all';
+  var flag = 0;
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_clock_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_clock_injector_config();
+  }
+  </script><script src="https://pv.sohu.com/cityjson?ie=utf-8"></script><script data-pjax src="https://npm.elemecdn.com/hexo-butterfly-clock/lib/clock.min.js"></script><!-- hexo injector body_end end -->
+        <style>
+            [bg-lazy] {
+                background-image: none !important;
+                background-color: #eee !important;
+            }
+        </style>
+        <script>
+            window.imageLazyLoadSetting = {
+                isSPA: false,
+                preloadRatio: 1,
+                processImages: null,
+            };
+        </script><script>window.addEventListener("load",function(){var t=/\.(gif|jpg|jpeg|tiff|png)$/i,r=/^data:image\/[a-z]+;base64,/;Array.prototype.slice.call(document.querySelectorAll("img[data-original]")).forEach(function(a){var e=a.parentNode;"A"===e.tagName&&(e.href.match(t)||e.href.match(r))&&(e.href=a.dataset.original)})});</script><script>!function(r){r.imageLazyLoadSetting.processImages=t;var e=r.imageLazyLoadSetting.isSPA,n=r.imageLazyLoadSetting.preloadRatio||1,c=a();function a(){var t=Array.prototype.slice.call(document.querySelectorAll("img[data-original]")),e=Array.prototype.slice.call(document.querySelectorAll("[bg-lazy]"));return t.concat(e)}function t(){e&&(c=a());for(var t,o=0;o<c.length;o++)0<=(t=(t=c[o]).getBoundingClientRect()).bottom&&0<=t.left&&t.top<=(r.innerHeight*n||document.documentElement.clientHeight*n)&&function(){var t,e,n,a,i=c[o];e=function(){c=c.filter(function(t){return i!==t}),r.imageLazyLoadSetting.onImageLoaded&&r.imageLazyLoadSetting.onImageLoaded(i)},(t=i).hasAttribute("bg-lazy")?(t.removeAttribute("bg-lazy"),e&&e()):(n=new Image,a=t.getAttribute("data-original"),n.onload=function(){t.src=a,t.removeAttribute("data-original"),e&&e()},t.src!==a&&(n.src=a))}()}function i(){clearTimeout(t.tId),t.tId=setTimeout(t,500)}t(),document.addEventListener("scroll",i),r.addEventListener("resize",i),r.addEventListener("orientationchange",i)}(this);</script></body></html>
