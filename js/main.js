@@ -155,3 +155,39 @@
     init();
   }
 })();
+
+/* QQ 一键复制 */
+(function () {
+  var card = document.getElementById('qq-card');
+  if (!card) { return; }
+  function fallbackCopy(text) {
+    var ta = document.createElement('textarea');
+    ta.value = text;
+    ta.style.position = 'fixed';
+    ta.style.opacity = '0';
+    document.body.appendChild(ta);
+    ta.select();
+    try { document.execCommand('copy'); } catch (e) {}
+    document.body.removeChild(ta);
+  }
+  function doCopy() {
+    var valEl = card.querySelector('.contact-value');
+    var labelEl = card.querySelector('.contact-label');
+    var text = valEl ? valEl.textContent.trim() : '';
+    var done = function () {
+      var old = labelEl.textContent;
+      labelEl.textContent = '已复制';
+      setTimeout(function () { labelEl.textContent = old; }, 1600);
+    };
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(done).catch(function () { fallbackCopy(text); done(); });
+    } else {
+      fallbackCopy(text);
+      done();
+    }
+  }
+  card.addEventListener('click', doCopy);
+  card.addEventListener('keydown', function (e) {
+    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); doCopy(); }
+  });
+})();
