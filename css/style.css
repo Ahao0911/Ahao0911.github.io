@@ -356,20 +356,20 @@ ul {
 
 .avatar-ring {
   position: relative;
-  width: min(300px, 74vw);
-  aspect-ratio: 3 / 4;
-  border-radius: 28px;
-  padding: 8px;
+  width: min(260px, 62vw);
+  aspect-ratio: 1 / 1;
+  border-radius: 32px;
   background: linear-gradient(145deg, var(--color-primary), var(--color-accent));
   box-shadow: var(--shadow-hover);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.avatar {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 22px;
-  border: 4px solid #ffffff;
+.hero-icon {
+  width: 56%;
+  height: 56%;
+  color: #ffffff;
 }
 
 /* ---------- About ---------- */
@@ -1000,7 +1000,7 @@ ul {
   }
 
   .avatar-ring {
-    width: min(220px, 64vw);
+    width: min(190px, 60vw);
   }
 
   .section-title {
