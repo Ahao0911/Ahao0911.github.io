@@ -206,10 +206,10 @@
             <p class="project-period">2025.03 - 2025.05</p>
             <p class="project-stack">Multi-Agent + Workflow + RAG</p>
             <ul class="project-points">
-              <li>业务建模：危化品 / 设备 / 消防 / 人员四类高频风险。</li>
-              <li>Dify 多 Agent 编排：图像识别 / 知识库检索 / 法规匹配 / 大模型推理工具化。</li>
-              <li>RAG + Prompt 设计："风险识别 — 依据匹配 — 整改建议 — 应急处置"四段输出。</li>
-              <li>RTSP / ONVIF 摄像头对接 + FastAPI RESTful 服务。</li>
+              <li>业务建模：危化品 / 设备 / 消防 / 人员四类高频风险场景 + 四级分级权限体系。</li>
+              <li>Dify 多 Agent 编排：图像识别 / 知识库检索 / 法规匹配工具化，内置权限校验节点与角色路由。</li>
+              <li>RAG + Prompt 设计：按角色权限差异化检索，"风险识别 — 依据匹配 — 整改建议 — 应急处置"四段输出。</li>
+              <li>对接红外摄像头视频流，基于 FastAPI 构建 RESTful 服务接口，实现隐患识别与告警处置结构化上报。</li>
             </ul>
             <p class="project-result">成果：3 类核心任务、4 类高频风险场景的实验室安全多 Agent 原型。</p>
           </article>
@@ -219,7 +219,7 @@
               <span class="tag">MLLM 开发</span>
             </div>
             <h3 class="project-title">基于多模态大模型的灾害场景遥感智能解译</h3>
-            <p class="project-meta">应急管理大学 · 研究生科技创新基金</p>
+            <p class="project-meta">应急管理大学 · 研究生科技创新基金项目负责人</p>
             <p class="project-period">2025.06 - 2027.06</p>
             <p class="project-stack">Qwen2.5-VL-7B LoRA</p>
             <ul class="project-points">
@@ -229,6 +229,14 @@
               <li>RTX PRO 6000 + 昇腾 910B 异构部署；精度 80%+，分钟级推理。</li>
             </ul>
             <p class="project-result">成果：覆盖 6 类灾害的遥感样本库、3万+ 多模态指令数据集，建筑物损毁分级精度 80%+。</p>
+          </article>
+
+          <article class="personal-project reveal">
+            <div class="personal-project-head">
+              <h3 class="personal-project-title">智能交易决策 Agent 系统</h3>
+              <span class="personal-project-tag">个人项目</span>
+            </div>
+            <p>面向 A 股真实决策场景的自主 Agent 工程实践：将交易领域规则（技术信号 / 风控 / 复盘方法论）代码化为可执行逻辑，实现盘前研判 — 盘中执行 — 盘后复盘的 Agent 闭环工作流，封装 Skills/Tools 能力层，并自建量化回测引擎完成 8.2 万笔信号级验证；系统连续 20+ 个交易日无人值守稳定运行，持续维护更新。完整开源：<a href="https://github.com/Ahao0911/as-agent" target="_blank" rel="noopener">github.com/Ahao0911/as-agent</a></p>
           </article>
 
         </div>
@@ -250,6 +258,10 @@
           <div class="research-item reveal">
             <span class="research-badge badge-patent">国家发明专利（二作）</span>
             <p class="research-text">基于多源数据融合的冰冻圈流域水文预测方法及系统</p>
+          </div>
+          <div class="research-item reveal">
+            <span class="research-badge badge-patent">国家发明专利（六作）</span>
+            <p class="research-text">跨灾种动态提示驱动的灾害知识元抽取方法及相关装置</p>
           </div>
           <div class="research-item reveal">
             <span class="research-badge badge-copyright">软件著作权（一作）</span>
@@ -343,7 +355,7 @@
           </div>
           <div class="skill-group reveal">
             <h3 class="skill-group-name">AI 工程</h3>
-            <div class="skill-tags"><span class="skill-tag">Python</span><span class="skill-tag">FastAPI</span><span class="skill-tag">Flask</span><span class="skill-tag">RESTful</span><span class="skill-tag">RTSP/ONVIF</span></div>
+            <div class="skill-tags"><span class="skill-tag">Python</span><span class="skill-tag">FastAPI</span><span class="skill-tag">Flask</span><span class="skill-tag">RESTful</span><span class="skill-tag">红外摄像头接入</span></div>
           </div>
           <div class="skill-group reveal">
             <h3 class="skill-group-name">后端基础</h3>
