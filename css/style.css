@@ -631,7 +631,7 @@ ul {
 /* ---------- 项目卡片 ---------- */
 .projects-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 24px;
 }
 
@@ -731,44 +731,21 @@ ul {
   font-weight: 600;
 }
 
-/* 个人项目（弱化条带展示） */
-.personal-project {
-  margin-top: 30px;
-  padding: 20px 24px;
-  background: var(--color-primary-soft);
-  border: 1px dashed rgba(30, 58, 138, 0.35);
-  border-radius: var(--radius);
+/* 个人项目（弱化展示：同构卡片 + 虚线边框 + 浅灰底） */
+.project-card-personal {
+  background: var(--color-bg-soft);
+  border-style: dashed;
 }
-.personal-project-head {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-bottom: 8px;
+.project-card-personal:hover {
+  transform: none;
+  box-shadow: var(--shadow-card);
 }
-.personal-project-title {
-  font-size: 1.02rem;
-  font-weight: 700;
-  color: var(--color-text);
-  margin: 0;
-}
-.personal-project-tag {
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
-  color: var(--color-accent);
-  background: var(--color-accent-soft);
-  border-radius: var(--radius-sm);
-  padding: 3px 8px;
-}
-.personal-project p {
-  color: var(--color-secondary);
-  font-size: 0.93rem;
-  line-height: 1.75;
-  margin: 0;
-}
-.personal-project p a {
+.project-result a {
   color: var(--color-highlight);
-  word-break: break-all;
+  text-decoration: none;
+}
+.project-result a:hover {
+  text-decoration: underline;
 }
 
 /* ---------- 成果 ---------- */
